@@ -1,9 +1,6 @@
 "" Source your .vimrc
 "source ~/.vimrc
 
-"" Map <leader>d to start debug
-"map <leader>d <Action>(Debug)
-
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
@@ -49,37 +46,50 @@ set notimeout
 inoremap jk <Esc>
 
 " Tab navigation
-nnoremap <A-n> :tabnext<CR>
-nnoremap <A-p> :tabprev<CR>
+nnoremap <C-l> :tabnext<CR>
+nnoremap <C-h> :tabprev<CR>
 
 "" Leader commands
 "" ========================================================
 
-" Comment lines
+" [C]omment lines
 map <leader>c <action>(CommentByLineComment)
 
-" Jump around with easymotion
-map <leader>j <Plug>(easymotion-s)
+" [Q]uit active tab
+map <leader>q <action>(CloseContent)
 
-" Search
+" [S]earch
+"" --------------------------------------------------------
+" search [e]very where
+map <leader>se :action SearchEverywhere<cr>
+" search [c]lass
 map <leader>sc :action GotoClass<cr>
+" search [f]ile
 map <leader>sf :action GotoFile<cr>
+" search [a]ction
+map <leader>sa :action GotoAction<cr>
+" search [i]n all files
+map <leader>si :action FindInPath<cr>
 
-" Go to code
+" [G]o to code
+"" --------------------------------------------------------
 nmap <leader>gi <Action>(GotoImplementation)
 nmap <leader>gu <Action>(ShowUsages)
 
-" Refactoring
-map <leader>rn <Action>(RenameElement)
+" [R]efactoring
+map <leader>rr <Action>(RenameElement)
 
-" Close active tab
-map <leader>q <action>(CloseContent)
+" [L]sp format
+map <leader>l <Action>(ReformatCode)
 
-" Ace jump ------------------------
-
+" Ace jump
+"" --------------------------------------------------------
 " Press `f` to activate AceJump
 map <leader>f <Action>(AceAction)
 " Press `F` to activate Target Mode
 map <leader>F <Action>(AceTargetAction)
 " Press `g` to activate Line Mode
 map <leader>g <Action>(AceLineAction)
+
+" Jump around with easymotion
+map <leader>j <Plug>(easymotion-s)
