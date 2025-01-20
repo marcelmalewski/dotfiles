@@ -74,6 +74,7 @@ map <leader>si :action FindInPath<cr>
 " [G]o to code
 "" --------------------------------------------------------
 nmap <leader>gi <Action>(GotoImplementation)
+nmap <leader>gt <Action>(GoToTypeDeclaration)
 nmap <leader>gu <Action>(ShowUsages)
 
 " [R]efactoring
@@ -81,15 +82,6 @@ map <leader>rr <Action>(RenameElement)
 
 " [L]sp format
 map <leader>l <Action>(ReformatCode)
-
-" Ace jump
-"" --------------------------------------------------------
-" Press `f` to activate AceJump
-map <leader>f <Action>(AceAction)
-" Press `F` to activate Target Mode
-map <leader>F <Action>(AceTargetAction)
-" Press `g` to activate Line Mode
-map <leader>g <Action>(AceLineAction)
 
 " Jump around with easymotion
 map <leader>j <Plug>(easymotion-s)
