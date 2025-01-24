@@ -45,6 +45,12 @@ set notimeout
 " Jeżeli chce napisać “jk” wciskam dwa razy “j”, chwile czekam i “k”
 inoremap jk <Esc>
 
+" Map J to move 5 lines down
+nnoremap J 5j
+
+" Map K to move 5 lines up
+nnoremap K 5k
+
 " Tab navigation
 nnoremap <C-l> :tabnext<CR>
 nnoremap <C-h> :tabprev<CR>
