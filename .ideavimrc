@@ -36,7 +36,6 @@ set highlightedyank
 set nerdtree
 
 " Easymotion settings
-set easymotion
 set notimeout
 
 "" Key mappings
@@ -44,6 +43,11 @@ set notimeout
 
 " Jeżeli chce napisać “jk” wciskam dwa razy “j”, chwile czekam i “k”
 inoremap jk <Esc>
+
+" Map J to move 5 lines down
+nnoremap J 5j
+" Map K to move 5 lines up
+nnoremap K 5k
 
 " Tab navigation
 nnoremap <C-l> :tabnext<CR>
@@ -74,6 +78,7 @@ map <leader>si :action FindInPath<cr>
 " [G]o to code
 "" --------------------------------------------------------
 nmap <leader>gi <Action>(GotoImplementation)
+nmap <leader>gt <Action>(GoToTypeDeclaration)
 nmap <leader>gu <Action>(ShowUsages)
 
 " [R]efactoring
@@ -84,12 +89,5 @@ map <leader>l <Action>(ReformatCode)
 
 " Ace jump
 "" --------------------------------------------------------
-" Press `f` to activate AceJump
-map <leader>f <Action>(AceAction)
-" Press `F` to activate Target Mode
-map <leader>F <Action>(AceTargetAction)
-" Press `g` to activate Line Mode
-map <leader>g <Action>(AceLineAction)
-
-" Jump around with easymotion
-map <leader>j <Plug>(easymotion-s)
+" Press `j` to activate AceJump
+map <leader>j <Action>(AceAction)
