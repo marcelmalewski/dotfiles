@@ -78,7 +78,7 @@ map <leader>si :action FindInPath<cr>
 " [G]o to code
 "" --------------------------------------------------------
 nmap <leader>gi <Action>(GotoImplementation)
-nmap <leader>gt <Action>(GoToTypeDeclaration)
+nmap <leader>gd <Action>(GotoDeclaration)
 nmap <leader>gu <Action>(ShowUsages)
 
 " [R]efactoring
