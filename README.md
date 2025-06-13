@@ -1,1 +1,1 @@
-Użyj
+Użyj z głową.
