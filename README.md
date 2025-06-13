@@ -1,1 +1,1 @@
-Użyj z głową.
+Experts only.
