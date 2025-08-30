@@ -2,7 +2,7 @@
 
 ## Base
 
-1. Make sure you have [GNU Stow](https://www.gnu.org/software/stow/) installed.
+1. Install [GNU Stow](https://www.gnu.org/software/stow/)
 2. Run this command to set up your configs:
 
 ```sh
