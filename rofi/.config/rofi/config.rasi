@@ -1,5 +1,5 @@
 configuration{
-    modi: "drun,run";
+    modi: "drun";
     icon-theme: "Oranchelo";
     show-icons: true;
     terminal: "alacritty";
@@ -7,9 +7,7 @@ configuration{
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
-    display-drun: " 🚀  Apps ";
-    display-run: " 📜  Run ";
-    sidebar-mode: true;
+    display-drun: " 💡 Search ";
 }
 
 @theme "catppuccin-mocha"
