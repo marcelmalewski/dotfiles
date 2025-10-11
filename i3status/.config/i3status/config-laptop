@@ -1,0 +1,36 @@
+general {
+        colors = true
+        interval = 5
+        output_format = none
+}
+
+order += "volume master"
+order += "tztime local"
+order += "battery 0"
+order += "time"
+
+volume master {
+    format = " VOL %volume "
+    format_muted = " muted "
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
+}
+
+tztime local {
+    format = " %A %Y-%m-%d "
+}
+
+time {
+    format = " %H:%M "
+}
+
+battery 0 {
+    format = "%status %percentage %remaining "
+    path = "/sys/class/power_supply/BAT0/uevent"
+    low_threshold = 15
+    threshold_type = percentage
+    status_chr = "🔌"
+    status_bat = "🔋"
+    format_down = "no battery "
+}
