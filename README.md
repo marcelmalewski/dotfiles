@@ -1,5 +1,7 @@
 # dotfiles
 
+My private dotfiles.
+
 ## Base
 
 1. Install [GNU Stow](https://www.gnu.org/software/stow/)
