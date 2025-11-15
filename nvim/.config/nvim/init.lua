@@ -1,48 +1,48 @@
---[[
- Little Docs
+vim.cmd("set expandtab")
+vim.cmd("set tabstop=2")
+vim.cmd("set softtabstop=2")
+vim.cmd("set shiftwidth=2")
 
-`:help`
-  This will open up a help window with some basic information
-  about reading, navigating and searching the builtin help documentation.
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
 
-`:help lua-guide` as a
-reference for how Neovim integrates Lua.
-  - :help lua-guide
-  - (or HTML version): https://neovim.io/doc/user/lua-guide.html
-
-`<space>sh` to [s]earch the [h]elp documentation,
-which is very useful when you're not exactly sure of what you're looking for.
-
-`:checkheatlh` to check health of configuration
-
-In folder `pluins` you can search with grep and find usefull NOTES
-
-TODO
-  1. stworzyć lua/plugins.lua dać return {}.
-  2. Użyje wtedy require("lazy").setup("plugins"), typecraft ep 2
-  3. stworzyć folder lua/plugins, tam wrzucić wszystkie pluginy. Teraz te plugin będą się automatycznie ładować.
-  4. sprobować usunąć lua/plugins.lua, ale chyba jest konieczne
-  k
---]]
-
--- [[ Global editor variables ]]
---  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
-
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
 
--- [[ Setting options ]]
-require 'options'
+require("lazy").setup({
+  spec = { { import = "plugins" } },
+  checker = { enabled = true },
+  rocks = { enabled = false },
+})
 
--- [[ Basic Keymaps ]]
-require 'keymaps'
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[C] [F]ind [F]iles' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[C] [F]ind by [G]rep' })
 
--- [[ Basic Autocommands ]]
-require 'autocommands'
+local config = require("nvim-treesitter.configs")
+config.setup({
+  -- snap neovim come with a lot of parsers but treesitter will only respect this parsers
+  ensure_installed = 
+    { "lua", "javascript", "markdown" },
+  auto_install = false,
+  highlight = { enable = true , additional_vim_regex_highlighting = false},
+  indent = { enable = true }
+})
 
--- [[ Configure and install plugins ]]
-require 'lazy-plugins'
 
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+vim.keymap.set('i', 'jk', '<ESC>', { desc= 'Exit insert mode' })
+vim.keymap.set('n', '\\', ':Neotree toggle left<CR>', { desc= '[C] NeoTree reveal' })
